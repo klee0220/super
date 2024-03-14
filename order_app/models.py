@@ -6,13 +6,13 @@ class Equipment(models.Model):
     model = models.CharField(max_length=100)
 
 
-class User(models.Model):
+class CustomUser(models.Model):  # Переименовал модель User на CustomUser, чтобы избежать конфликта имен
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=255)
 
 
 class FieldAnalyzer(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  # Использовал переименованную модель CustomUser
     status = models.CharField(max_length=50)
 
 
@@ -22,5 +22,13 @@ class Request(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=50)
     last_updated_date = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  # Использовал переименованную модель CustomUser
     analyzer = models.ForeignKey(FieldAnalyzer, on_delete=models.CASCADE)
+
+    def mark_as_completed(self):  # Переместил метод в модель FieldAnalyzer
+        self.status = 'Completed'
+        self.save()
+
+    def mark_as_in_progress(self):  # Переместил метод в модель FieldAnalyzer
+        self.status = 'In Progress'
+        self.save()
