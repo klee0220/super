@@ -70,13 +70,7 @@ def complete_request(request, request_id):
 def view_all_requests(request):
     # Получаем все заявки
     all_requests = Request.objects.all()
-
-    # Выводим информацию о заявках
-    output = ""
-    for request_instance in all_requests:
-        output += f"Request ID: {request_instance.id}, Type: {request_instance.request_type}, Urgency: {request_instance.urgency}, Status: {request_instance.status}<br>"
-
-    return HttpResponse(output)
+    return render(request, 'view_all_requests.html', {'all_requests': all_requests})
 
 
 def order_home(request):
