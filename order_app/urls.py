@@ -10,4 +10,10 @@ urlpatterns = [
     path('view_all_requests/', views.view_all_requests, name='view_all_requests'),
     # Добавляем путь для URL /order/
     path('', views.order_home, name='order_home'),
+    path('login/', views.user_login, name='login'),
+    path('register/', views.user_registration, name='register'),
+    path('logout/', views.user_logout, name='logout'),
+
 ]
+
+

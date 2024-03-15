@@ -24,7 +24,3 @@ dropdb super_db
 устанавливаем pcycopg2
 pip install psycopg2==2.9.9
 
-# админка
-создание суперпользователя:
-
-python manage.py createsuperuser
