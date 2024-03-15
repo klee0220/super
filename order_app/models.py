@@ -6,9 +6,15 @@ class Equipment(models.Model):
     model = models.CharField(max_length=100)
 
 
-class CustomUser(models.Model):  # Переименовал модель User на CustomUser, чтобы избежать конфликта имен
+class CustomUserManager(models.Manager):
+    pass
+
+
+class CustomUser(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=255)
+
+    objects = CustomUserManager()
 
 
 class FieldAnalyzer(models.Model):
