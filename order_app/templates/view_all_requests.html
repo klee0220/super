@@ -17,5 +17,11 @@
             </li>
         {% endfor %}
     </ul>
+    <a href="{% url 'create_request' %}">Create New Request</a>
+     <!-- Вставляем кнопку Logout -->
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
 </body>
 </html>
