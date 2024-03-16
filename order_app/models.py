@@ -33,10 +33,10 @@ class Request(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     analyzer = models.ForeignKey(FieldAnalyzer, on_delete=models.CASCADE)
 
-    def mark_as_completed(self):  # Переместил метод в модель FieldAnalyzer
+    def mark_as_completed(self):
         self.status = 'Completed'
         self.save()
 
-    def mark_as_in_progress(self):  # Переместил метод в модель FieldAnalyzer
+    def mark_as_in_progress(self):
         self.status = 'In Progress'
         self.save()

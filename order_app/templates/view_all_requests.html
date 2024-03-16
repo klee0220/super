@@ -13,7 +13,9 @@
                 Request ID: {{ request_instance.id }},
                 Type: {{ request_instance.request_type }},
                 Urgency: {{ request_instance.urgency }},
-                Status: {{ request_instance.status }}
+                Status: {{ request_instance.status }},
+                <!-- Добавляем дату создания -->
+                Creation Date: {{ request_instance.creation_date }}
             </li>
         {% endfor %}
     </ul>
