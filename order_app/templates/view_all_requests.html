@@ -4,21 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Requests</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
     <h1>All Requests</h1>
-    <ul>
-        {% for request_instance in all_requests %}
-            <li>
-                Request ID: {{ request_instance.id }},
-                Type: {{ request_instance.request_type }},
-                Urgency: {{ request_instance.urgency }},
-                Status: {{ request_instance.status }},
-                <!-- Добавляем дату создания -->
-                Creation Date: {{ request_instance.creation_date }}
-            </li>
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>Type</th>
+                <th>Urgency</th>
+                <th>Status</th>
+                <th>Creation Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request_instance in all_requests %}
+                <tr>
+                    <td>{{ request_instance.id }}</td>
+                    <td>{{ request_instance.request_type }}</td>
+                    <td>{{ request_instance.urgency }}</td>
+                    <td>{{ request_instance.status }}</td>
+                    <td>{{ request_instance.creation_date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <a href="{% url 'create_request' %}">Create New Request</a>
      <!-- Вставляем кнопку Logout -->
     <form action="{% url 'logout' %}" method="post">
