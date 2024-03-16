@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Requests</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Requests</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>User</th>
+                <th>Type</th>
+                <th>Urgency</th>
+                <th>Status</th>
+                <th>Creation Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request_instance in all_requests %}
+                <tr>
+                    <td>{{ request_instance.id }}</td>
+                    <td>{{ request_instance.user.username }}</td> <!-- Имя пользователя -->
+                    <td>{{ request_instance.request_type }}</td>
+                    <td>{{ request_instance.urgency }}</td>
+                    <td>{{ request_instance.get_status_display }}</td> <!-- Отображение статуса -->
+                    <td>{{ request_instance.creation_date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'create_request' %}">Create New Request</a>
+     <!-- Вставляем кнопку Logout -->
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
