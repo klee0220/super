@@ -23,6 +23,7 @@
         <thead>
             <tr>
                 <th>Request ID</th>
+                <th>User</th>
                 <th>Type</th>
                 <th>Urgency</th>
                 <th>Status</th>
@@ -33,6 +34,7 @@
             {% for request_instance in all_requests %}
                 <tr>
                     <td>{{ request_instance.id }}</td>
+                    <td>{{ request_instance.user.username }}</td> <!-- Имя пользователя -->
                     <td>{{ request_instance.request_type }}</td>
                     <td>{{ request_instance.urgency }}</td>
                     <td>{{ request_instance.status }}</td>
