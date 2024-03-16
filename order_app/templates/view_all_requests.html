@@ -37,7 +37,7 @@
                     <td>{{ request_instance.user.username }}</td> <!-- Имя пользователя -->
                     <td>{{ request_instance.request_type }}</td>
                     <td>{{ request_instance.urgency }}</td>
-                    <td>{{ request_instance.status }}</td>
+                    <td>{{ request_instance.get_status_display }}</td> <!-- Отображение статуса -->
                     <td>{{ request_instance.creation_date }}</td>
                 </tr>
             {% endfor %}

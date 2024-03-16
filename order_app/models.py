@@ -40,3 +40,8 @@ class Request(models.Model):
     def mark_as_in_progress(self):
         self.status = 'In Progress'
         self.save()
+
+    def get_status_display(self):
+        if not self.status:
+            return "Pending"
+        return self.status
